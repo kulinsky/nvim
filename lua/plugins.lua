@@ -63,6 +63,9 @@ return require("packer").startup({
 
 		use("airblade/vim-gitgutter")
 
+        -- icons
+        use("kyazdani42/nvim-web-devicons")
+
         -- icons in completion
         use("onsails/lspkind-nvim")
 
