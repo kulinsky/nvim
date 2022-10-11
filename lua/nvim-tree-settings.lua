@@ -4,46 +4,47 @@ vim.g.loaded_netrwPlugin = 1
 --require("nvim-web-devicons").setup()
 
 require("nvim-tree").setup({
-  view = {
-    adaptive_size = true,
-  },
-  diagnostics = {
-    enable = true,
-    icons = {
-      hint = " ",
-      info = " ",
-      warning = " ",
-      error = " ",
+    open_on_setup = true,
+    view = {
+        adaptive_size = true,
     },
-  },
-  update_cwd = true,
-  update_focused_file = {
-    enable = true,
+    diagnostics = {
+        enable = true,
+        icons = {
+            hint = " ",
+            info = " ",
+            warning = " ",
+        error = " ",
+        },
+    },
     update_cwd = true,
-  },
-  renderer = {
-    icons = {
-      show = {
-        folder_arrow = false,
-      },
+    update_focused_file = {
+        enable = true,
+        update_cwd = true,
     },
-    highlight_git = true,
-    highlight_opened_files = "all",
-    indent_markers = {
-      enable = true,
-      icons = {
-        corner = "└ ",
-        edge = "│ ",
-        none = "  ",
-      },
+    renderer = {
+        icons = {
+            show = {
+                folder_arrow = false,
+            },
+        },
+        highlight_git = true,
+        highlight_opened_files = "all",
+        indent_markers = {
+            enable = true,
+            icons = {
+                corner = "└ ",
+                edge = "│ ",
+                none = "  ",
+            },
+        },
     },
-  },
-  actions = {
-    change_dir = {
-      enable = false,
+    actions = {
+        change_dir = {
+            enable = false,
+        },
+        open_file = {
+            quit_on_open = false,
+        },
     },
-    open_file = {
-      quit_on_open = false,
-    },
-  },
 })
