@@ -13,6 +13,11 @@ nnoremap("fb", telescope_b.buffers)
 nnoremap("fh", telescope_b.help_tags)
 
 
+-- bufferline
+nnoremap("H", "<cmd>BufferLineCyclePrev<CR>")
+nnoremap("L", "<cmd>BufferLineCycleNext<CR>")
+
+
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
