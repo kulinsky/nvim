@@ -12,19 +12,48 @@ nnoremap("fg", telescope_b.live_grep)
 nnoremap("fb", telescope_b.buffers)
 nnoremap("fh", telescope_b.help_tags)
 
-nnoremap("K", vim.lsp.buf.hover)
-nnoremap("<C-k>", vim.lsp.buf.signature_help)
-nnoremap("gD", vim.lsp.buf.declaration)
-nnoremap("gd", vim.lsp.buf.definition)
-nnoremap("gr", vim.lsp.buf.references)
-nnoremap("gi", vim.lsp.buf.implementation)
-nnoremap("[d",
-    function() 
-        vim.diagnostic.goto_prev(border_options)
-    end
-)
-nnoremap("]d",
-    function()
-        vim.diagnostic.goto_next(border_options)
-    end
-)
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client.server_capabilities.hoverProvider then
+            nnoremap("K", vim.lsp.buf.hover)
+            -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
+        end
+
+        nnoremap("<leader>lr", vim.lsp.buf.rename)
+        -- nnoremap("<leader>lc", vim.lsp.buf.code_action)
+        nnoremap("<C-k>", vim.lsp.buf.signature_help)
+        nnoremap("gD", vim.lsp.buf.declaration)
+        nnoremap("gd", vim.lsp.buf.definition)
+        nnoremap("gr", vim.lsp.buf.references)
+        nnoremap("gi", vim.lsp.buf.implementation)
+        nnoremap("[d",
+            function() 
+                vim.diagnostic.goto_prev(border_options)
+            end
+        )
+        nnoremap("]d",
+            function()
+                vim.diagnostic.goto_next(border_options)
+            end
+        )
+    end,
+})
+
+-- nnoremap("K", vim.lsp.buf.hover)
+-- nnoremap("<C-k>", vim.lsp.buf.signature_help)
+-- nnoremap("gD", vim.lsp.buf.declaration)
+-- nnoremap("gd", vim.lsp.buf.definition)
+-- nnoremap("gr", vim.lsp.buf.references)
+-- nnoremap("gi", vim.lsp.buf.implementation)
+-- nnoremap("[d",
+--     function() 
+--         vim.diagnostic.goto_prev(border_options)
+--     end
+-- )
+-- nnoremap("]d",
+--     function()
+--         vim.diagnostic.goto_next(border_options)
+--     end
+-- )
