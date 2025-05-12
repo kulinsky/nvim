@@ -3,3 +3,6 @@
 -- Add any additional keymaps here
 
 vim.g.mapleader = " "
+
+-- bind RustTest to <leader>t
+-- vim.api.nvim_set_keymap("n", "<leader>t", ":RustTest<CR>", { noremap = true, silent = true })
